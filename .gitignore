@@ -1,0 +1,4 @@
+*.suo
+*.user
+OpenToolKit/obj/
+OpenToolKit/Properties/

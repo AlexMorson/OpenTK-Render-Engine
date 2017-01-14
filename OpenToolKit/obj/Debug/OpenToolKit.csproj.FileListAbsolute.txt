@@ -1,8 +1,0 @@
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\bin\Debug\OpenToolKit.exe.config
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\bin\Debug\OpenToolKit.exe
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\bin\Debug\OpenToolKit.pdb
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\bin\Debug\OpenTK.dll
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\bin\Debug\OpenTK.xml
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\obj\Debug\OpenToolKit.csprojResolveAssemblyReference.cache
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\obj\Debug\OpenToolKit.exe
-C:\Users\Alex\Desktop\Random\Coding stuffs\C#\OpenToolKit\OpenToolKit\obj\Debug\OpenToolKit.pdb

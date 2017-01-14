@@ -9,17 +9,13 @@ namespace OpenToolKit {
 		
 		private ShaderProgram shaderProgram;
 		private MatrixUniform projectionMatrix;
-		private Model[] models;
 
-		private double framesElapsed = 0;
-		
-		public Window(Model[] models) : base(800, 600, GraphicsMode.Default, "OpenTK", GameWindowFlags.Default, DisplayDevice.Default, 3, 3, GraphicsContextFlags.ForwardCompatible) {
-			this.models = models;
+        public Window(int width=800, int height=600, string title="Title!") : base(width, height, GraphicsMode.Default, title, GameWindowFlags.Default, DisplayDevice.Default, 3, 3, GraphicsContextFlags.ForwardCompatible) {
+            Console.WriteLine("OpenGL Version: {0}", GL.GetString(StringName.Version));
+        }
 
-			Console.WriteLine("OpenGL Version: {0}", GL.GetString(StringName.Version));
-		}
 
-		protected override void OnLoad(EventArgs e) {
+        protected override void OnLoad(EventArgs e) {
 			GL.Enable(EnableCap.DepthTest);
 
 			// Load shaders
@@ -58,19 +54,20 @@ void main() {
 			projectionMatrix = new MatrixUniform(2); // projectionMatrix
 			projectionMatrix.Matrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver2, 16f / 9f, 0.1f, 100f);
 
-			foreach (var model in models) {
-				model.Initialise();
-			}
+            // User implemented startup
+            OnStart();
 		}
+
+        protected virtual void OnStart() {
+
+        }
 
 		protected override void OnResize(EventArgs e) {
 			GL.Viewport(0, 0, Width, Height);
 		}
 
-        protected override void OnUpdateFrame(FrameEventArgs e) {
-			framesElapsed += 0.05;
-
-			models[0].Move((float)Math.Sin(framesElapsed) /40, (float)Math.Cos(framesElapsed) / 40, 0);
+        protected virtual Model[] GetModels() {
+            return new Model[0];
         }
 
         protected override void OnRenderFrame(FrameEventArgs e) {
@@ -81,7 +78,7 @@ void main() {
 			
 			projectionMatrix.Set();
 			
-			foreach (var model in models) {
+			foreach (var model in GetModels()) {
 				model.Draw();
 			}
 			

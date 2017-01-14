@@ -17,11 +17,9 @@ namespace OpenToolKit {
 
 			position = new Vector3(0, 0, 0);
 			rotation = new Quaternion(0, 0, 0);
-		}
 
-		public void Initialise() {
-			vertexArray = new VertexArray(new VertexBuffer(vertices));
-		}
+            vertexArray = new VertexArray(new VertexBuffer(vertices));
+        }
 
 		public void Move(float dx, float dy, float dz) {
 			position += new Vector3(dx, dy, dz);

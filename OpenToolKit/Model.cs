@@ -4,6 +4,7 @@ namespace OpenToolKit {
 	public class Model {
 
 		private Vertex[] vertices;
+        private Texture texture;
 		private VertexArray vertexArray;
 
 		private Vector3 position;
@@ -12,8 +13,9 @@ namespace OpenToolKit {
 		public Vector3 Position { get { return position; } }
 		public Quaternion Rotation { get { return rotation; } }
 
-		public Model(Vertex[] vertices) {
+		public Model(Vertex[] vertices, Texture texture) {
 			this.vertices = vertices;
+            this.texture = texture;
 
 			position = new Vector3(0, 0, 0);
 			rotation = new Quaternion(0, 0, 0);
@@ -35,9 +37,13 @@ namespace OpenToolKit {
 
 		public void Draw() {
 			SetModelMatrix();
+            texture.Bind();
+
 			vertexArray.Bind();
 			vertexArray.Draw();
 			vertexArray.Unbind();
+
+            texture.Unbind();
 		}
 	}
 }

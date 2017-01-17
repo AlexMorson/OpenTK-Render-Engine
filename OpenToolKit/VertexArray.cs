@@ -20,7 +20,7 @@ namespace OpenToolKit {
 			buffer.BufferData();
 
 			new VertexAttribute(0, 3, VertexAttribPointerType.Float, false, Vertex.Size, 0).Set();    // vPosition
-			new VertexAttribute(1, 4, VertexAttribPointerType.Float, false, Vertex.Size, 3 * 4).Set(); // vColour
+			new VertexAttribute(1, 2, VertexAttribPointerType.Float, false, Vertex.Size, 3 * 4).Set(); // vUVCoord
 
 			buffer.Unbind();
 

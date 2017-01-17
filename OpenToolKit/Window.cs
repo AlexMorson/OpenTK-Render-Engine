@@ -23,28 +23,30 @@ namespace OpenToolKit {
 @"#version 430
 
 layout (location = 0) in vec3 vPosition;
-layout (location = 1) in vec4 vColour;
+layout (location = 1) in vec2 vUVCoord;
 
 layout (location = 2) uniform mat4 projectionMatrix;
 //layout (location = 3) uniform mat4 viewMatrix;
 layout (location = 4) uniform mat4 modelMatrix;
 
-out vec4 fColour;
+out vec2 fUVCoord;
 
 void main() {
     gl_Position = projectionMatrix * modelMatrix * vec4(vPosition, 1.0);
-    fColour = vColour;
+    fUVCoord = vUVCoord;
 }"
 				);
 			Shader fragmentShader = new Shader(ShaderType.FragmentShader,
 @"#version 430
 
-in vec4 fColour;
+in vec2 fUVCoord;
+
+layout (binding = 0) uniform sampler2D sampler;
 
 out vec4 colour;
 
 void main() {
-    colour = fColour;
+    colour = texture(sampler, fUVCoord);
 }"
 				);
 
@@ -53,6 +55,9 @@ void main() {
 			// Load projection matrix
 			projectionMatrix = new MatrixUniform(2); // projectionMatrix
 			projectionMatrix.Matrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver2, 16f / 9f, 0.1f, 100f);
+
+            // Texture locations
+            GL.Uniform1(0, 0); // Diffuse texture at location 0, with texture unit 0
 
             // User implemented startup
             OnStart();

@@ -4,14 +4,14 @@ using OpenTK.Graphics;
 namespace OpenToolKit {
     public struct Vertex {
 
-        public const int Size = (3 + 4) * 4;
+        public const int Size = (3 + 2) * 4;
 
         private readonly Vector3 position;
-        private readonly Color4 colour;
+        private readonly Vector2 uvCoord;
 
-        public Vertex(Vector3 position, Color4 colour) {
+        public Vertex(Vector3 position, Vector2 uvCoord) {
             this.position = position;
-            this.colour = colour;
+            this.uvCoord = uvCoord;
         }
     }
 }

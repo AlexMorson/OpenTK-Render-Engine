@@ -32,7 +32,8 @@ namespace OpenToolKit {
         protected override void OnUpdateFrame(FrameEventArgs e) {
             framesElapsed += 0.05;
 
-            models[0].Move((float)Math.Sin(framesElapsed) / 40, (float)Math.Cos(framesElapsed) / 40, 0);
+            models[0].Translate((float)Math.Sin(framesElapsed) / 40, (float)Math.Cos(framesElapsed) / 40, 0);
+            models[0].Rotate(0.04f, 0, 0);
         }
 
         protected override Model[] GetModels() {

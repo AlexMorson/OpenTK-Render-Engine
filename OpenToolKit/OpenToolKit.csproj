@@ -65,8 +65,9 @@
   <ItemGroup>
     <Compile Include="Loader.cs" />
     <Compile Include="MatrixUniform.cs" />
-    <Compile Include="Model.cs" />
+    <Compile Include="Mesh.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shader.cs" />

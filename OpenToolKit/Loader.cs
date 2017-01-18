@@ -6,8 +6,8 @@ namespace OpenToolKit {
 
 		}*/
 
-        public static Texture LoadTexture(string filename) {
-            return new Texture(new Bitmap(filename));
-        }
+		public static Texture LoadTexture(string filename) {
+			return new Texture(new Bitmap(filename));
+		}
 	}
 }

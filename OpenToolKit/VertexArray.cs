@@ -1,21 +1,20 @@
 ﻿using OpenTK.Graphics.OpenGL;
-using System;
 
 namespace OpenToolKit {
-    internal class VertexArray {
+	internal class VertexArray {
 
-        private int handle;
+		private int handle;
 
 		private int vertexCount;
 
-        public VertexArray(VertexBuffer buffer, params VertexAttribute[] attributes) {
+		public VertexArray(VertexBuffer buffer, params VertexAttribute[] attributes) {
 			this.vertexCount = buffer.VertexCount;
 
 			GL.GenVertexArrays(1, out handle);
 			
-            Bind();
+			Bind();
 
-            buffer.Bind();
+			buffer.Bind();
 
 			buffer.BufferData();
 
@@ -24,15 +23,15 @@ namespace OpenToolKit {
 
 			buffer.Unbind();
 
-            Unbind();
-        }
+			Unbind();
+		}
 
-        public void Bind() {
-            GL.BindVertexArray(handle);
-        }
+		public void Bind() {
+			GL.BindVertexArray(handle);
+		}
 
-        public void Unbind() {
-            GL.BindVertexArray(0);
+		public void Unbind() {
+			GL.BindVertexArray(0);
 		}
 
 		public void Draw() {

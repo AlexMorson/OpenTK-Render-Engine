@@ -1,9 +1,11 @@
 ﻿using OpenTK;
 
 namespace OpenToolKit {
-	public class Model {
+	public class Mesh {
 
-		private Mesh[] meshes;
+		private Vertex[] vertices;
+		private Texture texture;
+		private VertexArray vertexArray;
 
 		private Vector3 position;
 		private Vector3 rotation;
@@ -11,11 +13,14 @@ namespace OpenToolKit {
 		public Vector3 Position { get { return position; } }
 		public Vector3 Rotation { get { return rotation; } }
 
-		public Model(params Mesh[] meshes) {
-			this.meshes = meshes;
+		public Mesh(Vertex[] vertices, Texture texture) {
+			this.vertices = vertices;
+			this.texture = texture;
 
 			this.position = new Vector3(0, 0, 0);
 			this.rotation = new Vector3(0, 0, 0);
+
+			vertexArray = new VertexArray(new VertexBuffer(vertices));
 		}
 
 		public void Translate(float dx, float dy, float dz) {
@@ -34,15 +39,19 @@ namespace OpenToolKit {
 			rotation = new Vector3(pitch, yaw, roll);
 		}
 
-		public void SetModelMatrix() {
-			new MatrixUniform(4, Matrix4.CreateFromQuaternion(new Quaternion(rotation)) * Matrix4.CreateTranslation(position)).Set();
+		public void SetMeshMatrix() {
+			new MatrixUniform(5, Matrix4.CreateTranslation(position) * Matrix4.CreateFromQuaternion(new Quaternion(rotation))).Set();
 		}
 
 		public void Draw() {
-			SetModelMatrix();
-			foreach (var mesh in meshes) {
-				mesh.Draw();
-			}
+			SetMeshMatrix();
+			texture.Bind();
+
+			vertexArray.Bind();
+			vertexArray.Draw();
+			vertexArray.Unbind();
+
+			texture.Unbind();
 		}
 	}
 }

@@ -2,8 +2,7 @@
 
 namespace OpenToolKit {
 	public class Mesh {
-
-		private Vertex[] vertices;
+		
 		private Texture texture;
 		private VertexArray vertexArray;
 
@@ -14,7 +13,6 @@ namespace OpenToolKit {
 		public Vector3 Rotation { get { return rotation; } }
 
 		public Mesh(Vertex[] vertices, Texture texture) {
-			this.vertices = vertices;
 			this.texture = texture;
 
 			this.position = new Vector3(0, 0, 0);
